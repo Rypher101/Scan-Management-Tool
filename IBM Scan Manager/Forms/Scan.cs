@@ -114,5 +114,10 @@ namespace IBM_Scan_Manager.Forms
         {
             new frmNewAssessment(int.Parse((cmbScan.SelectedItem as ComboboxItem).Value.ToString())).Show();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            new frmNewExcel(int.Parse((cmbScan.SelectedItem as ComboboxItem).Value.ToString())).Show();
+        }
     }
 }

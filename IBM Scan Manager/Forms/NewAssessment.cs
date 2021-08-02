@@ -14,6 +14,7 @@ namespace IBM_Scan_Manager.Forms
     {
         string[] files;
         int scanID;
+
         public frmNewAssessment(int scanID)
         {
             this.scanID = scanID;
@@ -149,6 +150,7 @@ namespace IBM_Scan_Manager.Forms
                 }
 
                 var noDup = objList
+                    .Where(e=>e.ScanId == scanID)
                     .GroupBy(e => new { e.Vulnerability, e.SourceFile, e.LineNum })
                     .Select(e=>e.First()).ToList();
 
