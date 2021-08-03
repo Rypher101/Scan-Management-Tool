@@ -18,8 +18,7 @@ namespace IBM_Scan_Manager
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new frmProject());
-            Application.Run(new frmProject());
+            Application.Run(new frmViewFindings());
         }
     }
 }

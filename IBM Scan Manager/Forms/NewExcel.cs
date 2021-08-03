@@ -7,7 +7,7 @@ using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using static IBM_Scan_Manager.Classes.Finding;
+using static IBM_Scan_Manager.Classes.FindingStatus;
 
 namespace IBM_Scan_Manager.Forms
 {

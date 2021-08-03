@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IBM_Scan_Manager.Classes
 {
-    class Finding
+    class FindingStatus
     {
         public enum Status: short
         {

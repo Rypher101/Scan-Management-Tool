@@ -9,6 +9,7 @@ namespace IBM_Scan_Manager.Forms
 {
     public partial class frmProject : Form
     {
+        private frmScan scanForm = null;
         public frmProject()
         {
             InitializeComponent();
@@ -27,7 +28,7 @@ namespace IBM_Scan_Manager.Forms
             using (var _context = new IBMScanDBContext())
             {
                 var col = new AutoCompleteStringCollection();
-                var response = _context.TblProjects.OrderByDescending(e=>e.Id).ToList();
+                var response = _context.TblProjects.OrderByDescending(e => e.Id).ToList();
 
                 foreach (var item in response)
                 {
@@ -123,7 +124,18 @@ namespace IBM_Scan_Manager.Forms
                     if (project == null)
                         MessageBox.Show("Couldnt find related project form database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     else
-                        new Scan(project.Id).Show();
+                    {
+                        if (scanForm == null || scanForm.IsDisposed)
+                        {
+                            scanForm = new frmScan(project.Id);
+                            scanForm.Show();
+                        }
+                        else
+                        {
+                            scanForm.Select();
+                        }
+                    }
+
                 }
         }
     }

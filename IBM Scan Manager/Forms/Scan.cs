@@ -11,9 +11,10 @@ using System.Windows.Forms;
 
 namespace IBM_Scan_Manager.Forms
 {
-    public partial class Scan : Form
+    public partial class frmScan : Form
     {
         private readonly int _projID;
+        private frmViewFindings findingsForm = null;
 
         public class ComboboxItem
         {
@@ -26,7 +27,7 @@ namespace IBM_Scan_Manager.Forms
             }
         }
 
-        public Scan(int ProjID)
+        public frmScan(int ProjID)
         {
             _projID = ProjID;
             InitializeComponent();
@@ -118,6 +119,20 @@ namespace IBM_Scan_Manager.Forms
         private void button3_Click(object sender, EventArgs e)
         {
             new frmNewExcel(int.Parse((cmbScan.SelectedItem as ComboboxItem).Value.ToString())).Show();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (findingsForm == null || findingsForm.IsDisposed)
+            {
+                findingsForm = new frmViewFindings(int.Parse((cmbScan.SelectedItem as ComboboxItem).Value.ToString()));
+                findingsForm.Show();
+            }
+            else
+            {
+                findingsForm.Select();
+            }
+            
         }
     }
 }

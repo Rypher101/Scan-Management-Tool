@@ -1,7 +1,7 @@
 ﻿
 namespace IBM_Scan_Manager.Forms
 {
-    partial class Scan
+    partial class frmScan
     {
         /// <summary>
         /// Required designer variable.
@@ -33,7 +33,6 @@ namespace IBM_Scan_Manager.Forms
             this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.cmbScan = new System.Windows.Forms.ComboBox();
@@ -80,7 +79,6 @@ namespace IBM_Scan_Manager.Forms
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button5);
             this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.label3);
@@ -88,28 +86,20 @@ namespace IBM_Scan_Manager.Forms
             this.groupBox1.Controls.Add(this.cmbScan);
             this.groupBox1.Location = new System.Drawing.Point(24, 56);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(856, 95);
+            this.groupBox1.Size = new System.Drawing.Size(741, 95);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Existing Scans";
             // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(586, 30);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(106, 39);
-            this.button5.TabIndex = 14;
-            this.button5.Text = "Open Excel";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(700, 30);
+            this.button4.Location = new System.Drawing.Point(584, 30);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(106, 39);
             this.button4.TabIndex = 13;
             this.button4.Text = "Open Assessment";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
@@ -140,7 +130,7 @@ namespace IBM_Scan_Manager.Forms
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Location = new System.Drawing.Point(24, 167);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(856, 160);
+            this.groupBox2.Size = new System.Drawing.Size(741, 160);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "New Scan";
@@ -226,15 +216,15 @@ namespace IBM_Scan_Manager.Forms
             this.label4.TabIndex = 4;
             this.label4.Text = "Scan Type :";
             // 
-            // Scan
+            // frmScan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(906, 353);
+            this.ClientSize = new System.Drawing.Size(810, 353);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.lblProject);
             this.Controls.Add(this.groupBox1);
-            this.Name = "Scan";
+            this.Name = "frmScan";
             this.Text = "Scan";
             this.Load += new System.EventHandler(this.Scan_Load);
             this.groupBox1.ResumeLayout(false);
@@ -263,7 +253,6 @@ namespace IBM_Scan_Manager.Forms
         private System.Windows.Forms.ComboBox cmbNewScan;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
     }
 }
