@@ -27,6 +27,7 @@ namespace IBM_Scan_Manager.Forms
         {
             using (var _context = new IBMScanDBContext())
             {
+                cmbProject2.Items.Clear();
                 var col = new AutoCompleteStringCollection();
                 var response = _context.TblProjects.OrderByDescending(e => e.Id).ToList();
 
@@ -37,7 +38,7 @@ namespace IBM_Scan_Manager.Forms
                     col.Add(value);
                 }
 
-                if (response != null)
+                if (response != null && response.Count > 0)
                     cmbProject2.SelectedIndex = 0;
 
                 cmbProject2.AutoCompleteSource = AutoCompleteSource.CustomSource;
@@ -58,7 +59,7 @@ namespace IBM_Scan_Manager.Forms
                     cmbProject.Items.Add(item);
                 }
 
-                if (projectList != null)
+                if (projectList != null && projectList.Count > 0)
                 {
                     cmbProject.SelectedIndex = 0;
                 }

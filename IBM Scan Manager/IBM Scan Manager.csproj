@@ -6,6 +6,7 @@
     <RootNamespace>IBM_Scan_Manager</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
     <StartupObject>IBM_Scan_Manager.Program</StartupObject>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
