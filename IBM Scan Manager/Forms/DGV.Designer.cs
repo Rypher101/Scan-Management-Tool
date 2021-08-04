@@ -68,6 +68,7 @@ namespace IBM_Scan_Manager.Forms
             this.Controls.Add(this.dgv);
             this.Name = "frmDGV";
             this.Text = "DGV";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmDGV_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.ResumeLayout(false);

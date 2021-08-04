@@ -14,9 +14,10 @@ namespace IBM_Scan_Manager.Forms
         private List<TblAssessment> findings;
         private List<TblAssessment> filteredFindings;
         private int scanID;
-        private TblAssessment selectedItem;
-        private bool useFiltered = false;
-        public frmViewFindings(int scanID =10)
+        public TblAssessment selectedItem;
+        private bool useFiltered = false, isFromSetValue = false;
+        private List<string> sortOrder = new List<string>();
+        public frmViewFindings(int scanID = 10)
         {
             this.scanID = scanID;
             InitializeComponent();
@@ -66,7 +67,7 @@ namespace IBM_Scan_Manager.Forms
                 acSource.Add(item.SourceFile.Split(@"\").Last());
                 acComment.Add(item.Comment);
             }
-            
+
             txtClassification.AutoCompleteCustomSource = acClassification;
             txtAPI.AutoCompleteCustomSource = acAPI;
             txtComment2.AutoCompleteCustomSource = acComment;
@@ -77,6 +78,7 @@ namespace IBM_Scan_Manager.Forms
 
         private void SetValues(TblAssessment model)
         {
+            isFromSetValue = true;
             selectedItem = model;
             lblClassification.Text = model.Classification;
             lblContext.Text = model.Context;
@@ -85,7 +87,7 @@ namespace IBM_Scan_Manager.Forms
             lblAPI.Text = model.Api;
             lblSource.Text = model.SourceFile;
             lblVulnerability.Text = model.Vulnerability;
-            cmbStatus.SelectedItem = model.Status;
+            cmbStatus.SelectedItem = (Status)model.Status;
             txtComment.Text = model.Comment;
 
             Clipboard.SetText(model.SourceFile.Split(@"\").Last());
@@ -95,7 +97,7 @@ namespace IBM_Scan_Manager.Forms
         {
             var temp = findings.FirstOrDefault(e => e.Id == id);
 
-            if(temp!=null)
+            if (temp != null)
                 SetValues(temp);
         }
 
@@ -120,30 +122,20 @@ namespace IBM_Scan_Manager.Forms
                 return findings;
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void label11_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnNxt_Click(object sender, EventArgs e)
         {
             if (useFiltered)
             {
                 int index = filteredFindings.IndexOf(selectedItem);
-                if (index < filteredFindings.Count-1)
+                if (index < filteredFindings.Count - 1)
                     SetValues(filteredFindings[index + 1]);
                 else
                 {
                     if (MessageBox.Show("This is the last item if the filtered list" + Environment.NewLine + "Do you want to continue with full list?", "End of the list", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                     {
                         index = findings.IndexOf(selectedItem);
-                        if (index<findings.Count-1)
-                            SetValues(findings[index + 1]); 
+                        if (index < findings.Count - 1)
+                            SetValues(findings[index + 1]);
                     }
                 }
             }
@@ -156,11 +148,6 @@ namespace IBM_Scan_Manager.Forms
 
             if (DGVForm != null && !DGVForm.IsDisposed)
                 DGVForm.FindWithID(selectedItem.Id);
-        }
-
-        private void label10_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnPrv_Click(object sender, EventArgs e)
@@ -183,7 +170,7 @@ namespace IBM_Scan_Manager.Forms
             else
             {
                 int index = findings.IndexOf(selectedItem);
-                if (index >0)
+                if (index > 0)
                     SetValues(findings[index - 1]);
             }
 
@@ -241,6 +228,312 @@ namespace IBM_Scan_Manager.Forms
                     SetValues(findings.First());
                 }
             }
+        }
+
+        private void SetSortOrder(int value)
+        {
+            switch (value)
+            {
+                case 1:
+                    sortOrder.Add("Classification");
+                    break;
+                case 2:
+                    sortOrder.Add("Vulnerability");
+                    break;
+                case 3:
+                    sortOrder.Add("API");
+                    break;
+                case 4:
+                    sortOrder.Add("Context");
+                    break;
+                case 5:
+                    sortOrder.Add("Line");
+                    break;
+                case 6:
+                    sortOrder.Add("Source");
+                    break;
+                case 7:
+                    sortOrder.Add("Excel");
+                    break;
+                case 8:
+                    sortOrder.Add("Status");
+                    break;
+                case 9:
+                    sortOrder.Add("Comment");
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void RemoveSortOrder(int value)
+        {
+            switch (value)
+            {
+                case 1:
+                    sortOrder.Remove("Classification");
+                    break;
+                case 2:
+                    sortOrder.Remove("Vulnerability");
+                    break;
+                case 3:
+                    sortOrder.Remove("API");
+                    break;
+                case 4:
+                    sortOrder.Remove("Context");
+                    break;
+                case 5:
+                    sortOrder.Remove("Line");
+                    break;
+                case 6:
+                    sortOrder.Remove("Source");
+                    break;
+                case 7:
+                    sortOrder.Remove("Excel");
+                    break;
+                case 8:
+                    sortOrder.Remove("Status");
+                    break;
+                case 9:
+                    sortOrder.Remove("Comment");
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void chkClassification_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkClassification.Checked)
+                SetSortOrder(1);
+            else
+                RemoveSortOrder(1);
+        }
+
+        private void chkVulnerablity_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkVulnerablity.Checked)
+                SetSortOrder(2);
+            else
+                RemoveSortOrder(2);
+        }
+
+        private void chkAPI_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkAPI.Checked)
+                SetSortOrder(3);
+            else
+                RemoveSortOrder(3);
+        }
+
+        private void chkContext_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkContext.Checked)
+                SetSortOrder(4);
+            else
+                RemoveSortOrder(4);
+        }
+
+        private void chkLine_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkLine.Checked)
+                SetSortOrder(5);
+            else
+                RemoveSortOrder(5);
+        }
+
+        private void chkSource_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkSource.Checked)
+                SetSortOrder(6);
+            else
+                RemoveSortOrder(6);
+        }
+
+        private void chkExcel_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkExcel.Checked)
+                SetSortOrder(7);
+            else
+                RemoveSortOrder(7);
+        }
+
+        private void chkStatus_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkStatus.Checked)
+                SetSortOrder(8);
+            else
+                RemoveSortOrder(8);
+        }
+
+        private void chkComment_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkComment.Checked)
+                SetSortOrder(9);
+            else
+                RemoveSortOrder(9);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var temp = new List<TblAssessment>();
+            if (sortOrder.Count > 0)
+            {
+                if (useFiltered)
+                    temp = filteredFindings;
+                else
+                    temp = findings;
+
+                foreach (var item in sortOrder)
+                {
+                    switch (item)
+                    {
+                        case "Classification":
+                            temp = temp.OrderBy(x => x.Classification).ToList();
+                            break;
+                        case "Vulnerability":
+                            temp = temp.OrderBy(x => x.Vulnerability).ToList();
+                            break;
+                        case "API":
+                            temp = temp.OrderBy(x => x.Api).ToList();
+                            break;
+                        case "Context":
+                            temp = temp.OrderBy(x => x.Context).ToList();
+                            break;
+                        case "Line":
+                            temp = temp.OrderBy(x => x.LineNum).ToList();
+                            break;
+                        case "Source":
+                            temp = temp.OrderBy(x => x.SourceFile).ToList();
+                            break;
+                        case "Excel":
+                            temp = temp.OrderBy(x => x.InExcel).ToList();
+                            break;
+                        case "Status":
+                            temp = temp.OrderBy(x => x.Status).ToList();
+                            break;
+                        case "Comment":
+                            temp = temp.OrderBy(x => x.Comment).ToList();
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
+                filteredFindings = temp;
+
+                if (filteredFindings.Count > 0)
+                {
+                    if (DGVForm != null && !DGVForm.IsDisposed)
+                    {
+                        useFiltered = true;
+                        DGVForm.SetDGVList(true);
+                        SetValues(filteredFindings.First());
+                    }
+                }
+                else
+                {
+                    if (DGVForm != null && !DGVForm.IsDisposed)
+                    {
+                        useFiltered = false;
+                        DGVForm.SetDGVList(false);
+                        SetValues(findings.First());
+                    }
+                }
+            }
+        }
+
+        private void cmbStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!isFromSetValue)
+            {
+                switch ((short)cmbStatus.SelectedItem)
+                {
+                    case 1:
+                        if (!txtComment.Text.ToLower().Contains("pending"))
+                        {
+                            txtComment.Text = "Pending. " + txtComment.Text;
+                        }
+                        break;
+                    case 2:
+                        if (!(txtComment.Text.ToLower().Contains("false") && txtComment.Text.ToLower().Contains("positive")))
+                        {
+                            txtComment.Text = "False Positive. " + txtComment.Text;
+                        }
+                        break;
+                    case 3:
+                        if (!(txtComment.Text.ToLower().Contains("positive") && txtComment.Text.ToLower().Contains("pending")))
+                        {
+                            txtComment.Text = "Positive but pending. " + txtComment.Text;
+                        }
+                        break;
+                    case 4:
+                        if (!txtComment.Text.ToLower().Contains("remediated"))
+                        {
+                            txtComment.Text = "Remediated. " + txtComment.Text;
+                        }
+                        break;
+                    default:
+                        break;
+                }
+
+                selectedItem.Status = (short)cmbStatus.SelectedItem;
+                selectedItem.Comment = txtComment.Text;
+
+                using (var context = new IBMScanDBContext())
+                {
+                    context.Entry(selectedItem).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                    var response = context.SaveChanges();
+
+                    if (response > 0 && DGVForm != null && !DGVForm.IsDisposed)
+                        if (useFiltered)
+                            DGVForm.SetDGVList(true);
+                        else
+                            DGVForm.SetDGVList(false);
+                } 
+            }else
+                isFromSetValue = false;
+        }
+
+        private void txtComment_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtComment_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter && !string.IsNullOrEmpty(txtComment.Text))
+            {
+                ChangeComment();
+            }
+        }
+
+        private void ChangeComment()
+        {
+            selectedItem.Comment = txtComment.Text;
+
+            using (var context = new IBMScanDBContext())
+            {
+                context.Entry(selectedItem).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                var response = context.SaveChanges();
+
+                if (response > 0)
+                    if (useFiltered)
+                        DGVForm.SetDGVList(true);
+                    else
+                        DGVForm.SetDGVList(false);
+            }
+        }
+
+        private void txtComment_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtComment.Text))
+                ChangeComment();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            ChangeComment();
         }
     }
 }

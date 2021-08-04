@@ -65,6 +65,7 @@ namespace IBM_Scan_Manager.Forms
             this.chkClassification = new System.Windows.Forms.CheckBox();
             this.txtClassification = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.cmbExcel = new System.Windows.Forms.ComboBox();
             this.numLine = new System.Windows.Forms.NumericUpDown();
             this.button1 = new System.Windows.Forms.Button();
@@ -74,7 +75,6 @@ namespace IBM_Scan_Manager.Forms
             this.txtContext = new System.Windows.Forms.TextBox();
             this.txtAPI = new System.Windows.Forms.TextBox();
             this.txtVulnerabiluty = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -223,6 +223,9 @@ namespace IBM_Scan_Manager.Forms
             this.txtComment.Name = "txtComment";
             this.txtComment.Size = new System.Drawing.Size(224, 90);
             this.txtComment.TabIndex = 2;
+            this.txtComment.TextChanged += new System.EventHandler(this.txtComment_TextChanged);
+            this.txtComment.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtComment_KeyPress);
+            this.txtComment.Leave += new System.EventHandler(this.txtComment_Leave);
             // 
             // cmbStatus
             // 
@@ -231,6 +234,7 @@ namespace IBM_Scan_Manager.Forms
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(224, 23);
             this.cmbStatus.TabIndex = 1;
+            this.cmbStatus.SelectedIndexChanged += new System.EventHandler(this.cmbStatus_SelectedIndexChanged);
             // 
             // btnPrv
             // 
@@ -250,6 +254,7 @@ namespace IBM_Scan_Manager.Forms
             this.btnSave.TabIndex = 3;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnNxt
             // 
@@ -341,6 +346,7 @@ namespace IBM_Scan_Manager.Forms
             this.button2.TabIndex = 33;
             this.button2.Text = "Sort";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // chkComment
             // 
@@ -351,6 +357,7 @@ namespace IBM_Scan_Manager.Forms
             this.chkComment.TabIndex = 8;
             this.chkComment.Text = "Comment";
             this.chkComment.UseVisualStyleBackColor = true;
+            this.chkComment.CheckedChanged += new System.EventHandler(this.chkComment_CheckedChanged);
             // 
             // chkStatus
             // 
@@ -361,6 +368,7 @@ namespace IBM_Scan_Manager.Forms
             this.chkStatus.TabIndex = 7;
             this.chkStatus.Text = "Status";
             this.chkStatus.UseVisualStyleBackColor = true;
+            this.chkStatus.CheckedChanged += new System.EventHandler(this.chkStatus_CheckedChanged);
             // 
             // chkExcel
             // 
@@ -371,6 +379,7 @@ namespace IBM_Scan_Manager.Forms
             this.chkExcel.TabIndex = 6;
             this.chkExcel.Text = "In Excel";
             this.chkExcel.UseVisualStyleBackColor = true;
+            this.chkExcel.CheckedChanged += new System.EventHandler(this.chkExcel_CheckedChanged);
             // 
             // chkSource
             // 
@@ -381,6 +390,7 @@ namespace IBM_Scan_Manager.Forms
             this.chkSource.TabIndex = 5;
             this.chkSource.Text = "Source File";
             this.chkSource.UseVisualStyleBackColor = true;
+            this.chkSource.CheckedChanged += new System.EventHandler(this.chkSource_CheckedChanged);
             // 
             // chkLine
             // 
@@ -391,6 +401,7 @@ namespace IBM_Scan_Manager.Forms
             this.chkLine.TabIndex = 4;
             this.chkLine.Text = "Line";
             this.chkLine.UseVisualStyleBackColor = true;
+            this.chkLine.CheckedChanged += new System.EventHandler(this.chkLine_CheckedChanged);
             // 
             // chkContext
             // 
@@ -401,6 +412,7 @@ namespace IBM_Scan_Manager.Forms
             this.chkContext.TabIndex = 3;
             this.chkContext.Text = "Context";
             this.chkContext.UseVisualStyleBackColor = true;
+            this.chkContext.CheckedChanged += new System.EventHandler(this.chkContext_CheckedChanged);
             // 
             // chkAPI
             // 
@@ -411,6 +423,7 @@ namespace IBM_Scan_Manager.Forms
             this.chkAPI.TabIndex = 2;
             this.chkAPI.Text = "API";
             this.chkAPI.UseVisualStyleBackColor = true;
+            this.chkAPI.CheckedChanged += new System.EventHandler(this.chkAPI_CheckedChanged);
             // 
             // chkVulnerablity
             // 
@@ -421,6 +434,7 @@ namespace IBM_Scan_Manager.Forms
             this.chkVulnerablity.TabIndex = 1;
             this.chkVulnerablity.Text = "Vulnerability";
             this.chkVulnerablity.UseVisualStyleBackColor = true;
+            this.chkVulnerablity.CheckedChanged += new System.EventHandler(this.chkVulnerablity_CheckedChanged);
             // 
             // chkClassification
             // 
@@ -431,6 +445,7 @@ namespace IBM_Scan_Manager.Forms
             this.chkClassification.TabIndex = 0;
             this.chkClassification.Text = "Classification";
             this.chkClassification.UseVisualStyleBackColor = true;
+            this.chkClassification.CheckedChanged += new System.EventHandler(this.chkClassification_CheckedChanged);
             // 
             // txtClassification
             // 
@@ -459,6 +474,16 @@ namespace IBM_Scan_Manager.Forms
             this.groupBox3.TabIndex = 24;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Search By";
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(19, 517);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(178, 23);
+            this.button3.TabIndex = 34;
+            this.button3.Text = "Search";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // cmbExcel
             // 
@@ -492,7 +517,6 @@ namespace IBM_Scan_Manager.Forms
             this.button1.TabIndex = 22;
             this.button1.Text = "Search";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // cmbStatus2
             // 
@@ -547,16 +571,6 @@ namespace IBM_Scan_Manager.Forms
             this.txtVulnerabiluty.Name = "txtVulnerabiluty";
             this.txtVulnerabiluty.Size = new System.Drawing.Size(178, 23);
             this.txtVulnerabiluty.TabIndex = 25;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(19, 517);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(178, 23);
-            this.button3.TabIndex = 34;
-            this.button3.Text = "Search";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // frmViewFindings
             // 

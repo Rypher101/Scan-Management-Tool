@@ -58,6 +58,8 @@ namespace IBM_Scan_Manager.Forms
 
             dgv.DataSource = dt;
             dgv.Refresh();
+
+            FindWithID(findingForm.selectedItem.Id);
         }
 
         private void resizeColumnsToolStripMenuItem_Click(object sender, EventArgs e)
