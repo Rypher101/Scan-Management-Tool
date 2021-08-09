@@ -75,6 +75,8 @@ namespace IBM_Scan_Manager.Forms
             this.txtContext = new System.Windows.Forms.TextBox();
             this.txtAPI = new System.Windows.Forms.TextBox();
             this.txtVulnerabiluty = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtExclude = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -458,6 +460,8 @@ namespace IBM_Scan_Manager.Forms
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.txtExclude);
+            this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Controls.Add(this.button3);
             this.groupBox3.Controls.Add(this.cmbExcel);
             this.groupBox3.Controls.Add(this.numLine);
@@ -470,7 +474,7 @@ namespace IBM_Scan_Manager.Forms
             this.groupBox3.Controls.Add(this.txtVulnerabiluty);
             this.groupBox3.Location = new System.Drawing.Point(633, 3);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(214, 556);
+            this.groupBox3.Size = new System.Drawing.Size(412, 556);
             this.groupBox3.TabIndex = 24;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Search By";
@@ -572,11 +576,29 @@ namespace IBM_Scan_Manager.Forms
             this.txtVulnerabiluty.Size = new System.Drawing.Size(178, 23);
             this.txtVulnerabiluty.TabIndex = 25;
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(217, 46);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(150, 15);
+            this.label10.TabIndex = 23;
+            this.label10.Text = "Exclude files that contains :";
+            // 
+            // txtExclude
+            // 
+            this.txtExclude.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtExclude.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtExclude.Location = new System.Drawing.Point(217, 64);
+            this.txtExclude.Name = "txtExclude";
+            this.txtExclude.Size = new System.Drawing.Size(178, 23);
+            this.txtExclude.TabIndex = 35;
+            // 
             // frmViewFindings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(869, 571);
+            this.ClientSize = new System.Drawing.Size(1057, 571);
             this.Controls.Add(this.txtClassification);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -645,5 +667,7 @@ namespace IBM_Scan_Manager.Forms
         private System.Windows.Forms.TextBox txtAPI;
         private System.Windows.Forms.ComboBox cmbExcel;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox txtExclude;
+        private System.Windows.Forms.Label label10;
     }
 }

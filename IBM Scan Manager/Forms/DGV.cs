@@ -75,7 +75,11 @@ namespace IBM_Scan_Manager.Forms
                 .ToArray<DataGridViewRow>();
 
             if (rows.Length > 0)
+            {
                 rows[0].Selected = true;
+                dgv.FirstDisplayedScrollingRowIndex = rows[0].Index - 3 < 0 ? 0 : rows[0].Index - 3;
+            }
+
         }
 
         private void dgv_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)

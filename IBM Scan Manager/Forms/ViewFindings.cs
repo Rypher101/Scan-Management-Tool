@@ -89,7 +89,7 @@ namespace IBM_Scan_Manager.Forms
             lblVulnerability.Text = model.Vulnerability;
             cmbStatus.SelectedItem = (Status)model.Status;
             txtComment.Text = model.Comment;
-
+            isFromSetValue = false;
             Clipboard.SetText(model.SourceFile.Split(@"\").Last());
         }
 
@@ -124,6 +124,9 @@ namespace IBM_Scan_Manager.Forms
 
         private void btnNxt_Click(object sender, EventArgs e)
         {
+            if (!string.IsNullOrWhiteSpace(txtComment.Text) && txtComment.Text != selectedItem.Comment)
+                ChangeComment();
+
             if (useFiltered)
             {
                 int index = filteredFindings.IndexOf(selectedItem);
@@ -152,6 +155,9 @@ namespace IBM_Scan_Manager.Forms
 
         private void btnPrv_Click(object sender, EventArgs e)
         {
+            if (!string.IsNullOrWhiteSpace(txtComment.Text) && txtComment.Text != selectedItem.Comment)
+                ChangeComment();
+
             if (useFiltered)
             {
                 int index = filteredFindings.IndexOf(selectedItem);
@@ -173,6 +179,9 @@ namespace IBM_Scan_Manager.Forms
                 if (index > 0)
                     SetValues(findings[index - 1]);
             }
+
+            if (!string.IsNullOrWhiteSpace(txtComment.Text) && !string.Equals(txtComment.Text, selectedItem.Comment))
+                ChangeComment();
 
             if (DGVForm != null && !DGVForm.IsDisposed)
                 DGVForm.FindWithID(selectedItem.Id);
@@ -200,13 +209,25 @@ namespace IBM_Scan_Manager.Forms
             if (!string.IsNullOrEmpty(txtSource.Text))
                 temp = temp.Where(e => e.SourceFile.Contains(txtSource.Text)).ToList();
 
-            if (cmbExcel.SelectedText == "True")
+            if (cmbExcel.SelectedItem.ToString() == "True")
                 temp = temp.Where(e => e.InExcel == true).ToList();
-            if (cmbExcel.SelectedText == "False")
+            if (cmbExcel.SelectedItem.ToString() == "False")
                 temp = temp.Where(e => e.InExcel == false).ToList();
 
-            if (!string.IsNullOrEmpty(txtComment2.Text))
+            if (!string.IsNullOrEmpty(txtComment2.Text) && txtComment2.Text != @"_")
                 temp = temp.Where(e => e.Comment.Contains(txtComment2.Text)).ToList();
+
+            if (txtComment2.Text == @"_")
+                temp = temp.Where(e => e.Comment=="" || e.Comment== null || e.Comment==" ").ToList();
+
+            if (!string.IsNullOrWhiteSpace(txtExclude.Text))
+            {
+                string[] tempList = txtExclude.Text.ToLower().Replace(" ", "").Split("|");
+                foreach (var item in tempList)
+                {
+                    temp = temp.Where(e => !e.SourceFile.ToLower().Contains(item)).ToList();
+                }
+            }
 
             filteredFindings = temp;
 
@@ -476,21 +497,6 @@ namespace IBM_Scan_Manager.Forms
                     default:
                         break;
                 }
-
-                selectedItem.Status = (short)cmbStatus.SelectedItem;
-                selectedItem.Comment = txtComment.Text;
-
-                using (var context = new IBMScanDBContext())
-                {
-                    context.Entry(selectedItem).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-                    var response = context.SaveChanges();
-
-                    if (response > 0 && DGVForm != null && !DGVForm.IsDisposed)
-                        if (useFiltered)
-                            DGVForm.SetDGVList(true);
-                        else
-                            DGVForm.SetDGVList(false);
-                } 
             }else
                 isFromSetValue = false;
         }
@@ -510,6 +516,7 @@ namespace IBM_Scan_Manager.Forms
 
         private void ChangeComment()
         {
+            selectedItem.Status = (short)cmbStatus.SelectedItem;
             selectedItem.Comment = txtComment.Text;
 
             using (var context = new IBMScanDBContext())
