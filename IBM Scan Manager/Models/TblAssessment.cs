@@ -16,20 +16,21 @@ namespace IBM_Scan_Manager.Models
         public int Id { get; set; }
         [Column("ScanID")]
         public int ScanId { get; set; }
-        [Column(TypeName = "text")]
+        [StringLength(100)]
         public string Classification { get; set; }
         [Required]
-        [Column(TypeName = "text")]
+        [StringLength(500)]
         public string Vulnerability { get; set; }
-        [Column("API", TypeName = "text")]
+        [Column("API")]
+        [StringLength(500)]
         public string Api { get; set; }
-        [Column(TypeName = "text")]
+        [StringLength(500)]
         public string Context { get; set; }
         public int LineNum { get; set; }
         [Required]
-        [Column(TypeName = "text")]
+        [StringLength(500)]
         public string SourceFile { get; set; }
-        [Column(TypeName = "text")]
+        [StringLength(500)]
         public string Comment { get; set; }
         public short Status { get; set; }
         public bool InExcel { get; set; }

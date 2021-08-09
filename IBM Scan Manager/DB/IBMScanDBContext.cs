@@ -37,6 +37,18 @@ namespace IBM_Scan_Manager.Models
 
             modelBuilder.Entity<TblAssessment>(entity =>
             {
+                entity.Property(e => e.Api).IsUnicode(false);
+
+                entity.Property(e => e.Classification).IsUnicode(false);
+
+                entity.Property(e => e.Comment).IsUnicode(false);
+
+                entity.Property(e => e.Context).IsUnicode(false);
+
+                entity.Property(e => e.SourceFile).IsUnicode(false);
+
+                entity.Property(e => e.Vulnerability).IsUnicode(false);
+
                 entity.HasOne(d => d.Scan)
                     .WithMany(p => p.TblAssessments)
                     .HasForeignKey(d => d.ScanId)
