@@ -134,5 +134,10 @@ namespace IBM_Scan_Manager.Forms
             }
             
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            new frmDetails(int.Parse((cmbScan.SelectedItem as ComboboxItem).Value.ToString())).Show();
+        }
     }
 }

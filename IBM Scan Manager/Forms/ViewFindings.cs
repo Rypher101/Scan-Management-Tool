@@ -124,6 +124,11 @@ namespace IBM_Scan_Manager.Forms
 
         private void btnNxt_Click(object sender, EventArgs e)
         {
+            GoNext();
+        }
+
+        private void GoNext()
+        {
             if (!string.IsNullOrWhiteSpace(txtComment.Text) && txtComment.Text != selectedItem.Comment)
                 ChangeComment();
 
@@ -201,7 +206,15 @@ namespace IBM_Scan_Manager.Forms
                 temp = temp.Where(e => e.Context == txtContext.Text).ToList();
 
             if (!string.IsNullOrEmpty(txtVulnerabiluty.Text))
-                temp = temp.Where(e => e.Vulnerability == txtVulnerabiluty.Text).ToList();
+            {
+                if (txtVulnerabiluty.Text.First() == '!')
+                {
+                    var tempVul = txtVulnerabiluty.Text.Replace("!","");
+                    temp = temp.Where(e => e.Vulnerability != tempVul).ToList();
+                }
+                else
+                    temp = temp.Where(e => e.Vulnerability == txtVulnerabiluty.Text).ToList();
+            }             
 
             if (numLine.Value != 0)
                 temp = temp.Where(e => e.LineNum == numLine.Value).ToList();
@@ -497,8 +510,15 @@ namespace IBM_Scan_Manager.Forms
                     default:
                         break;
                 }
-            }else
+
+                if (chkProceed.Checked)
+                {
+                    GoNext();
+                }
+            }
+            else
                 isFromSetValue = false;
+
         }
 
         private void txtComment_TextChanged(object sender, EventArgs e)

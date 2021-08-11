@@ -65,6 +65,8 @@ namespace IBM_Scan_Manager.Forms
             this.chkClassification = new System.Windows.Forms.CheckBox();
             this.txtClassification = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtExclude = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.cmbExcel = new System.Windows.Forms.ComboBox();
             this.numLine = new System.Windows.Forms.NumericUpDown();
@@ -75,8 +77,7 @@ namespace IBM_Scan_Manager.Forms
             this.txtContext = new System.Windows.Forms.TextBox();
             this.txtAPI = new System.Windows.Forms.TextBox();
             this.txtVulnerabiluty = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.txtExclude = new System.Windows.Forms.TextBox();
+            this.chkProceed = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -280,6 +281,7 @@ namespace IBM_Scan_Manager.Forms
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.chkProceed);
             this.groupBox1.Controls.Add(this.lblSource);
             this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Controls.Add(this.txtComment);
@@ -479,6 +481,24 @@ namespace IBM_Scan_Manager.Forms
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Search By";
             // 
+            // txtExclude
+            // 
+            this.txtExclude.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtExclude.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtExclude.Location = new System.Drawing.Point(217, 64);
+            this.txtExclude.Name = "txtExclude";
+            this.txtExclude.Size = new System.Drawing.Size(178, 23);
+            this.txtExclude.TabIndex = 35;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(217, 46);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(150, 15);
+            this.label10.TabIndex = 23;
+            this.label10.Text = "Exclude files that contains :";
+            // 
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(19, 517);
@@ -576,23 +596,15 @@ namespace IBM_Scan_Manager.Forms
             this.txtVulnerabiluty.Size = new System.Drawing.Size(178, 23);
             this.txtVulnerabiluty.TabIndex = 25;
             // 
-            // label10
+            // chkProceed
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(217, 46);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(150, 15);
-            this.label10.TabIndex = 23;
-            this.label10.Text = "Exclude files that contains :";
-            // 
-            // txtExclude
-            // 
-            this.txtExclude.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.txtExclude.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtExclude.Location = new System.Drawing.Point(217, 64);
-            this.txtExclude.Name = "txtExclude";
-            this.txtExclude.Size = new System.Drawing.Size(178, 23);
-            this.txtExclude.TabIndex = 35;
+            this.chkProceed.AutoSize = true;
+            this.chkProceed.Location = new System.Drawing.Point(368, 360);
+            this.chkProceed.Name = "chkProceed";
+            this.chkProceed.Size = new System.Drawing.Size(69, 19);
+            this.chkProceed.TabIndex = 23;
+            this.chkProceed.Text = "Proceed";
+            this.chkProceed.UseVisualStyleBackColor = true;
             // 
             // frmViewFindings
             // 
@@ -669,5 +681,6 @@ namespace IBM_Scan_Manager.Forms
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox txtExclude;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.CheckBox chkProceed;
     }
 }

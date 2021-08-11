@@ -44,6 +44,7 @@ namespace IBM_Scan_Manager.Forms
             this.label5 = new System.Windows.Forms.Label();
             this.cmbNewScan = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.button5 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmbScan)).BeginInit();
@@ -79,6 +80,7 @@ namespace IBM_Scan_Manager.Forms
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button5);
             this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.label3);
@@ -86,7 +88,7 @@ namespace IBM_Scan_Manager.Forms
             this.groupBox1.Controls.Add(this.cmbScan);
             this.groupBox1.Location = new System.Drawing.Point(24, 56);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(741, 95);
+            this.groupBox1.Size = new System.Drawing.Size(820, 95);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Existing Scans";
@@ -130,14 +132,14 @@ namespace IBM_Scan_Manager.Forms
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Location = new System.Drawing.Point(24, 167);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(741, 160);
+            this.groupBox2.Size = new System.Drawing.Size(820, 160);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "New Scan";
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(596, 80);
+            this.button2.Location = new System.Drawing.Point(696, 79);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(106, 40);
             this.button2.TabIndex = 7;
@@ -147,14 +149,14 @@ namespace IBM_Scan_Manager.Forms
             // 
             // dtpScan
             // 
-            this.dtpScan.Location = new System.Drawing.Point(123, 74);
+            this.dtpScan.Location = new System.Drawing.Point(145, 73);
             this.dtpScan.Name = "dtpScan";
             this.dtpScan.Size = new System.Drawing.Size(227, 23);
             this.dtpScan.TabIndex = 12;
             // 
             // nmbScan
             // 
-            this.nmbScan.Location = new System.Drawing.Point(475, 31);
+            this.nmbScan.Location = new System.Drawing.Point(575, 30);
             this.nmbScan.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -177,7 +179,7 @@ namespace IBM_Scan_Manager.Forms
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(52, 80);
+            this.label6.Location = new System.Drawing.Point(74, 79);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(65, 15);
             this.label6.TabIndex = 10;
@@ -186,7 +188,7 @@ namespace IBM_Scan_Manager.Forms
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(384, 34);
+            this.label5.Location = new System.Drawing.Point(484, 33);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(85, 15);
             this.label5.TabIndex = 8;
@@ -201,7 +203,7 @@ namespace IBM_Scan_Manager.Forms
             "Angular",
             "PHP",
             "Java"});
-            this.cmbNewScan.Location = new System.Drawing.Point(123, 30);
+            this.cmbNewScan.Location = new System.Drawing.Point(145, 29);
             this.cmbNewScan.Name = "cmbNewScan";
             this.cmbNewScan.Size = new System.Drawing.Size(227, 23);
             this.cmbNewScan.TabIndex = 7;
@@ -210,17 +212,27 @@ namespace IBM_Scan_Manager.Forms
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(52, 33);
+            this.label4.Location = new System.Drawing.Point(74, 32);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(65, 15);
             this.label4.TabIndex = 4;
             this.label4.Text = "Scan Type :";
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(696, 30);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(106, 39);
+            this.button5.TabIndex = 14;
+            this.button5.Text = "Assessment Details";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // frmScan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(810, 353);
+            this.ClientSize = new System.Drawing.Size(877, 353);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.lblProject);
             this.Controls.Add(this.groupBox1);
@@ -254,5 +266,6 @@ namespace IBM_Scan_Manager.Forms
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
     }
 }
